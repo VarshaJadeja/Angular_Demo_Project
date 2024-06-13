@@ -1,0 +1,58 @@
+  <div class="mx-3 " >
+    <div class="row">
+      <div class="col-12">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by title"
+            [(ngModel)]="title"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-primary"
+              type="button"
+          
+              (click)="searchTitle()"
+              style="background-color: rgb(12, 92, 12); border-color: rgb(12, 92, 12);"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-12"><h4>Product List</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let tutorial of tutorials; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveTutorial(tutorial, i)"
+          >
+            {{ tutorial.productName }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Product Details</h5>
+          </div>
+          <div class="card-body">
+            <app-product-details
+              [viewMode]="true"
+              [currentTutorial]="currentTutorial"
+            ></app-product-details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

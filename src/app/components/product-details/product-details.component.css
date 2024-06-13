@@ -1,0 +1,24 @@
+.edit-form {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .form-box{
+    border: 1px solid lightgray;
+    background-color:rgb(238, 238, 238);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .btn-primary{
+    color: white;
+    background-color: rgb(156, 31, 31);
+    border: 1px solid rgb(156, 31, 31);
+    border-radius: 5px;
+  }
+  .btn-success{
+    color: white;
+    background-color: rgb(12, 92, 12);
+    border: 1px solid rgb(12, 92, 12);
+    border-radius: 5px;
+  }

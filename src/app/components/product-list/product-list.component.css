@@ -1,0 +1,12 @@
+/* .list {
+    text-align: left;
+    max-width: 750px;
+    margin: auto;
+  } */
+
+  .active{
+      background-color: #343a40;
+      border: #343a40;
+  }
+ 
+  

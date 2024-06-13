@@ -1,0 +1,101 @@
+
+    <div *ngIf=" viewMode && currentTutorial.id">
+    
+      <h4>Product</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentTutorial.productName }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentTutorial.productDescription }}
+      </div>
+      <div>
+          <label><strong>Price:</strong></label>
+          {{ currentTutorial.productPrice }}
+        </div>
+        <div>
+          <label><strong>Stock:</strong></label>
+          {{ currentTutorial.productStock }}
+        </div>
+     
+      <a class="btn-success p-1" routerLink="/products/{{ currentTutorial.id }}">
+        Edit
+      </a>
+      
+    </div>
+    <div *ngIf="viewMode && !currentTutorial.id">
+      <p>Please click on a Product...</p>
+    </div>
+
+    <div *ngIf="!viewMode && currentTutorial.id">
+    
+      <div class="edit-form">
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-primary mb-3 bg-dark border-dark" routerLink="/products">
+            Back
+          </a>
+        </div>
+        <div class="form-box">
+        <h4>Product</h4>
+        <form>
+          <div class="form-group">
+            <label for="title">ProductName</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              [(ngModel)]="currentTutorial.productName"
+              name="title"
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              [(ngModel)]="currentTutorial.productDescription"
+              name="description"
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Product Price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              [(ngModel)]="currentTutorial.productPrice"
+              name="productPrice"
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Product Stock</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              [(ngModel)]="currentTutorial.productStock"
+              name="productStock"
+            />
+          </div>
+        
+        </form>
+        <button class="btn-primary mr-2 p-2" (click)="deleteTutorial()">
+          Delete
+        </button>
+    
+        <button
+          type="submit"
+          class="btn-success p-2"
+          (click)="updateTutorial()">
+          Update
+        </button>
+      </div>
+        <!-- <p>{{ message }}</p> -->
+      </div>
+    </div>
+    <div *ngIf="!viewMode &&!currentTutorial.id">
+      <p>Cannot access this Tutorial...</p>
+    </div>
+   
