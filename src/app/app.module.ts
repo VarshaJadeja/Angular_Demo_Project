@@ -21,6 +21,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+
+// Your code using DateTime goes here
 
 @NgModule({
   declarations: [
@@ -46,7 +53,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxMaterialTimepickerModule,
+    
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

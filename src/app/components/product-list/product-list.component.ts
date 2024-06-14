@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
     productStock: 0,
     categoryId: '',
     productType: '',
+    productStatus: [],
   };
   currentIndex = -1;
   title = '';
@@ -48,6 +49,7 @@ export class ProductListComponent implements OnInit {
       productStock: 0,
       categoryId: '',
       productType: '',
+      productStatus: [],
     };
     this.currentIndex = -1;
   }
@@ -66,6 +68,7 @@ export class ProductListComponent implements OnInit {
       productStock: 0,
       categoryId: '',
       productType: '',
+      productStatus: [],
     };
     this.currentIndex = -1;
 

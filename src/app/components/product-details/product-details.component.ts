@@ -3,6 +3,14 @@ import { ProductService } from '../../services/product-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetails } from '../../models/product.model';
 import { ToastrService } from 'ngx-toastr';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +20,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductDetailsComponent implements OnInit {
   @Input() viewMode = false;
 
-  @Input() currentTutorial: ProductDetails = {
+  @Input() productDetails: ProductDetails = {
     id: '',
     productName: '',
     productDescription: '',
@@ -20,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     productStock: 0,
     categoryId: '',
     productType: '',
+    productStatus: []
   };
 
   constructor(
@@ -38,7 +47,7 @@ export class ProductDetailsComponent implements OnInit {
   getTutorial(id: string): void {
     this.productService.get(id).subscribe({
       next: (data) => {
-        this.currentTutorial = data;
+        this.productDetails = data;
         console.log(data);
       },
       error: (e) => console.error(e),
@@ -47,7 +56,7 @@ export class ProductDetailsComponent implements OnInit {
 
   updateTutorial(): void {
     this.productService
-      .update(this.currentTutorial.id, this.currentTutorial)
+      .update(this.productDetails.id, this.productDetails)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -59,7 +68,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteTutorial(): void {
-    this.productService.delete(this.currentTutorial.id).subscribe({
+    this.productService.delete(this.productDetails.id).subscribe({
       next: (res) => {
         console.log(res);
         this.router.navigate(['/products']);

@@ -7,5 +7,10 @@ export class ProductDetails {
     productStock: number = 0;
     categoryId: string = '';
     productType: string = '';
+    productStatus: Array<[]> = [];
+    fromDate?: Date;
+    toDate?: Date;
+    time?: any;
+    fileUpload?: string = ''
 }
 

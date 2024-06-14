@@ -1,22 +1,45 @@
+
+mat-form-field{
+  width: 100%;
+}
 .submit-form {
-    max-width: 400px;
-    margin: auto;
-  }
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-box {
+  border: 1px solid lightgray;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.bg-container{
+  background-color: #f0f0f0;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field label {
+  color: #000; 
+  font-size: 14px; 
+}
+
+.mat-form-field.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-20px) scale(0.75); 
+}
 
 .btn-success {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #343a40;
+  background-color: #28a745;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -33,22 +56,44 @@ h4 {
   text-align: center;
   color: #28a745;
 }
-.success-box{
+
+.success-box {
   border: 1px solid green;
-  padding: 8px;
-  border-radius: 10px;
-}
-.form-box{
-  border: 1px solid lightgray;
-  background-color:rgb(238, 238, 238);
   padding: 20px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
-mat-error{
+.mat-error {
   color: red;
 }
 
-.mat-mdc-radio-button ~ .mat-mdc-radio-button {
-  margin-left: 16px;
+.upload-document-container {
+  margin-top: 20px;
 }
+
+.upload-document-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.file-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.file-input:hover {
+  background-color: #f8f9fa;
+}
+
+

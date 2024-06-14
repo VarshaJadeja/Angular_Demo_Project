@@ -5,7 +5,7 @@
 
   .form-box{
     border: 1px solid lightgray;
-    background-color:rgb(238, 238, 238);
+    background-color:rgb(255, 255, 255);
     padding: 20px;
     border-radius: 10px;
   }
@@ -22,3 +22,21 @@
     border: 1px solid rgb(12, 92, 12);
     border-radius: 5px;
   }
+
+  /* Custom styles for mat-form-field */
+mat-form-field {
+  width: 100%;
+
+}
+
+.mat-form-field-label {
+  color: #333; /* Set label color */
+}
+
+.mat-form-field-underline::after {
+  background-color: #2196f3; /* Set underline color */
+}
+
+.mat-form-field-ripple {
+  color: #2196f3; /* Set ripple color when focusing */
+}
