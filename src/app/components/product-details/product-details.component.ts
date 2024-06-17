@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product-service.service';
+import { ProductService } from '@services/product-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductDetails } from '../../models/product.model';
+import { ProductDetails } from '@models/product.model';
 import { ToastrService } from 'ngx-toastr';
 import {
   FormArray,
@@ -10,7 +10,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
 
 @Component({
   selector: 'app-product-details',
@@ -28,7 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     productStock: 0,
     categoryId: '',
     productType: '',
-    productStatus: []
+    productStatus: [],
   };
 
   constructor(
@@ -55,6 +54,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   updateTutorial(): void {
+    if (!this.productDetails.id) {
+      console.error('Product id is undefined');
+      return;
+    }
     this.productService
       .update(this.productDetails.id, this.productDetails)
       .subscribe({
@@ -68,6 +71,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteTutorial(): void {
+    if (!this.productDetails.id) {
+      // Handle the case where id is undefined 
+      console.error('Product id is undefined');
+      return;
+    }
     this.productService.delete(this.productDetails.id).subscribe({
       next: (res) => {
         console.log(res);

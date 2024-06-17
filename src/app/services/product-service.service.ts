@@ -16,23 +16,23 @@ export class ProductService {
     return this.http.get<ProductDetails[]>(baseUrl);
   }
 
-  get(id: any): Observable<ProductDetails> {
+  get(id: string): Observable<ProductDetails> {
     return this.http.get<ProductDetails>(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  create(data: ProductDetails): Observable<ProductDetails> {
+    return this.http.post<ProductDetails>(baseUrl, data);
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+  update(id: string, data: ProductDetails): Observable<ProductDetails> {
+    return this.http.put<ProductDetails>(`${baseUrl}/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+  delete(id: string): Observable<ProductDetails> {
+    return this.http.delete<ProductDetails>(`${baseUrl}/${id}`);
   }
 
-  findByTitle(title: any): Observable<ProductDetails[]> {
+  findByTitle(title: string): Observable<ProductDetails[]> {
     return this.http.get<ProductDetails[]>(`${baseUrl}/productName?productName=${title}`);
   }
   getCategories(): Observable<ProductDetails[]> {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Categories } from '../../models/categories.model';
-import { ProductService } from '../../services/product-service.service';
+import { Categories } from '@models/categories.model';
+import { ProductService } from '@services/product-service.service';
 
 @Component({
   selector: 'app-categories',

@@ -1,5 +1,5 @@
 export class Categories {
-    id?: any;
+    id?: string;
     type?: string;
-    categoryId?:string;
+    // categoryId?:string;
 }

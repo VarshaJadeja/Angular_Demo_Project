@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { FileUploadDetails } from '@app/models/file-upload-details';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class FileUploadService {
   constructor(private http: HttpClient) {}
 
   // Returns an observable
-  upload(file: File): Observable<any> {
+  upload(file: File): Observable<FileUploadDetails> {
     // Create form data
     const formData = new FormData();
 
@@ -21,6 +22,6 @@ export class FileUploadService {
 
     // Make http post request over api
     // with formData as req
-    return this.http.post(this.baseApiUrl, formData);
+    return this.http.post<FileUploadDetails>(this.baseApiUrl, formData);
   }
 }

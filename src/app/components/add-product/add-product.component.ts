@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { ProductDetails } from '../../models/product.model';
-import { ProductService } from '../../services/product-service.service';
+import { ProductDetails } from '@models/product.model';
+import { ProductService } from '@services/product-service.service';
 import {
   FormArray,
   FormBuilder,
@@ -9,10 +9,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { BehaviorSubject, Observable, map, startWith } from 'rxjs';
-import { Categories } from '../../models/categories.model';
+import { Categories } from '@models/categories.model';
 import { DateTime } from 'luxon';
-import { FileUploadService } from '../../services/file-upload-service.service';
-
+import { FileUploadService } from '@services/file-upload-service.service';
+import { TimepickerDirective } from 'ngx-material-timepicker';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -35,13 +35,14 @@ export class AddProductComponent {
   required: boolean = !1;
   file: File | null = null;
 
-  @ViewChild('timepicker') timepicker: any;
+  @ViewChild('timepicker') timepicker!: TimepickerDirective;
   openFromIcon(timepicker: { open: () => void }) {
     if (!this.formControlItem.disabled) {
       timepicker.open();
     }
   }
-  statusFormArray: Array<any> = [];
+
+  statusFormArray: string[] = [];
   products = [
     { name: 'New' },
     { name: 'Pending' },
@@ -49,12 +50,12 @@ export class AddProductComponent {
     { name: 'Completed' },
   ];
 
-  onChange(email: string, event: any) {
-    const isChecked: boolean = event.target.checked;
+  onChange(status: string, event: Event) {
+    const isChecked: boolean = (event.target as HTMLInputElement).checked;
     if (isChecked) {
-      this.statusFormArray.push(email);
+      this.statusFormArray.push(status);
     } else {
-      let index = this.statusFormArray.indexOf(email);
+      let index = this.statusFormArray.indexOf(status);
       this.statusFormArray.splice(index, 1);
     }
   }
@@ -126,31 +127,7 @@ export class AddProductComponent {
       this.categorySubject.next(categories);
     });
   }
-  // saveProduct(): void {
-  //   console.log('Form Value:', this.productForm.value);
-
-  //   const data = {
-  //     productName: this.productForm.get('productName')?.value,
-  //     productDescription: this.productForm.get('productDescription')?.value,
-  //     productPrice: this.productForm.get('productPrice')?.value,
-  //     productStock: this.productForm.get('productStock')?.value,
-  //     categoryId: this.productForm.get('category.categoryId')?.value,
-  //     productType: this.productForm.get('productType')?.value,
-  //     productStatus: this.statusFormArray,
-  //     fromDate: this.productForm.get('fromDate')?.value.toString(),
-  //     toDate: this.productForm.get('toDate')?.value.toString(),
-  //     time: this.productForm.get('time')?.value.toString()
-
-  //   };
-  //   console.log('Data to send:', data);
-  //   this.productService.create(data).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.submitted = true;
-  //     },
-  //     error: (e) => console.error(e),
-  //   });
-  // }
+ 
   onChangeFile(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
@@ -164,14 +141,13 @@ export class AddProductComponent {
       this.fileUploadService.upload(this.file).subscribe({
         next: (response) => {
           const filename = response.name;
-          console.log(filename);
+          console.log(response);
           const data = {
             productName: this.productForm.get('productName')?.value,
-            productDescription:
-              this.productForm.get('productDescription')?.value,
+            productDescription: this.productForm.get('productDescription')?.value,
             productPrice: this.productForm.get('productPrice')?.value,
             productStock: this.productForm.get('productStock')?.value,
-            categoryId: this.productForm.get('category.categoryId')?.value,
+            categoryId: this.productForm.get('categoryId')?.value,
             productType: this.productForm.get('productType')?.value,
             productStatus: this.statusFormArray,
             fromDate: this.productForm.get('fromDate')?.value.toString(),
@@ -210,17 +186,5 @@ export class AddProductComponent {
       toDate: null,
     });
   }
-  // get name() {
-  //   return this.productForm.get('productName');
-  // }
-  // getCategories(): void {
-  // this.productService.getCategories().subscribe({
-  //   next: (data: Categories[] | undefined) => {
-  //     this.category = data;
-  //     console.log(data);
-  //     this.categorySubject.next(data);
-  //   },
-  //   error: (e: any) => console.error(e),
-  // });
-  // }
+ 
 }

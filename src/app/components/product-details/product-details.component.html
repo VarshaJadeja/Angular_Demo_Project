@@ -1,115 +1,108 @@
+<div *ngIf="viewMode && productDetails.id">
+  <h4>Product</h4>
+  <div>
+    <label><strong>Name:</strong></label> {{ productDetails.productName }}
+  </div>
+  <div>
+    <label><strong>Description:</strong></label>
+    {{ productDetails.productDescription }}
+  </div>
+  <div>
+    <label><strong>Price:</strong></label>
+    {{ productDetails.productPrice }}
+  </div>
+  <div>
+    <label><strong>Stock:</strong></label>
+    {{ productDetails.productStock }}
+  </div>
+  <div>
+    <label><strong>productType:</strong></label>
+    {{ productDetails.productType }}
+  </div>
+  <div>
+    <label><strong>Status:</strong></label>
+    {{ productDetails.productStatus }}
+  </div>
+  <div>
+    <label><strong>FromDate:</strong></label>
+    {{ productDetails.fromDate }}
+  </div>
+  <div>
+    <label><strong>ToDate:</strong></label>
+    {{ productDetails.toDate }}
+  </div>
+  <a class="btn-success p-1" routerLink="/products/{{ productDetails.id }}">
+    Edit
+  </a>
+</div>
+<div *ngIf="viewMode && !productDetails.id">
+  <p>Please click on a Product...</p>
+</div>
 
-
-    <div *ngIf=" viewMode && productDetails.id" >
-    
-      <h4>Product</h4>
-      <div>
-        <label><strong>Name:</strong></label> {{ productDetails.productName }}
-      </div>
-      <div>
-        <label><strong>Description:</strong></label>
-        {{ productDetails.productDescription }}
-      </div>
-      <div>
-          <label><strong>Price:</strong></label>
-          {{ productDetails.productPrice }}
-        </div>
-        <div>
-          <label><strong>Stock:</strong></label>
-          {{ productDetails.productStock }}
-        </div>
-        <div>
-          <label><strong>productType:</strong></label>
-          {{ productDetails.productType }}
-        </div>
-        <div>
-          <label><strong>Status:</strong></label>
-          {{ productDetails.productStatus }}
-        </div>
-        <div>
-          <label><strong>FromDate:</strong></label>
-          {{ productDetails.fromDate }}
-        </div>
-        <div>
-          <label><strong>ToDate:</strong></label>
-          {{ productDetails.toDate }}
-        </div>
-      <a class="btn-success p-1" routerLink="/products/{{ productDetails.id }}">
-        Edit
+<div *ngIf="!viewMode && productDetails.id" class="mt-4">
+  <div class="edit-form">
+    <div class="d-flex justify-content-end">
+      <a
+        class="btn btn-primary mb-3 bg-dark border-dark"
+        routerLink="/products"
+      >
+        Back
       </a>
-      
     </div>
-    <div *ngIf="viewMode && !productDetails.id">
-      <p>Please click on a Product...</p>
-    </div>
-
-    <div *ngIf="!viewMode && productDetails.id" class="mt-4">
-    
-      <div class="edit-form">
-        <div class="d-flex justify-content-end">
-          <a class="btn btn-primary mb-3 bg-dark border-dark" routerLink="/products">
-            Back
-          </a>
+    <div class="form-box shadow">
+      <h4>Product</h4>
+      <form>
+        <div class="form-group">
+          <label for="title"><b>ProductName</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="productDetails.productName"
+            name="title"
+          />
         </div>
-        <div class="form-box">
-        <h4>Product</h4>
-        <form>
-          <div class="form-group">
-            <label for="title"><b>ProductName</b></label>
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              [(ngModel)]="productDetails.productName"
-              name="title"
-            />
-          </div>
-          <div class="form-group form-floating">
-            <label for="description"><b>Description</b></label>
-            <input
-              type="text"
-              class="form-control"
-              id="description"
-              [(ngModel)]="productDetails.productDescription"
-              name="description"
-            />
-          </div>
-          
-          <div class="form-group">
-            <label for="description"><b>Product Price</b></label>
-            <input
-              type="text"
-              class="form-control"
-              id="description"
-              [(ngModel)]="productDetails.productPrice"
-              name="productPrice"
-            />
-          </div>
-          <div class="form-group">
-            <label for="description"><b>Product Stock</b></label>
-            <input
-              type="text"
-              class="form-control"
-              id="description"
-              [(ngModel)]="productDetails.productStock"
-              name="productStock"
-            />
-          </div>
-        </form>
-        <button class="btn-primary mr-2 p-2" (click)="deleteTutorial()">
-          Delete
-        </button>
-        <button
-          type="submit"
-          class="btn-success p-2"
-          (click)="updateTutorial()">
-          Update
-        </button>
-      </div>
-        <!-- <p>{{ message }}</p> -->
-      </div>
+        <div class="form-group form-floating">
+          <label for="description"><b>Description</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="productDetails.productDescription"
+            name="description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description"><b>Product Price</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="productDetails.productPrice"
+            name="productPrice"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description"><b>Product Stock</b></label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="productDetails.productStock"
+            name="productStock"
+          />
+        </div>
+      </form>
+      <button class="btn-primary mr-2 p-2" (click)="deleteTutorial()">
+        Delete
+      </button>
+      <button type="submit" class="btn-success p-2" (click)="updateTutorial()">
+        Update
+      </button>
     </div>
-    <div *ngIf="!viewMode &&!productDetails.id">
-      <p>Cannot access this Tutorial...</p>
-    </div>
-   
+    <!-- <p>{{ message }}</p> -->
+  </div>
+</div>
+<div *ngIf="!viewMode && !productDetails.id">
+  <p>Cannot access this Tutorial...</p>
+</div>
