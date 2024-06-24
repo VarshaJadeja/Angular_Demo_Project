@@ -33,9 +33,9 @@
       <ul class="list-group shadow-sm">
         <li
           class="list-group-item"
-          *ngFor="let tutorial of tutorials; let i = index"
+          *ngFor="let tutorial of product; let i = index"
           [class.active]="i == currentIndex"
-          (click)="setActiveTutorial(tutorial, i)"
+          (click)="setActiveProduct(tutorial, i)"
         >
           {{ tutorial.productName }}
         </li>
@@ -49,7 +49,7 @@
         <div class="card-body">
           <app-product-details
             [viewMode]="true"
-            [productDetails]="currentTutorial"
+            [productDetails]="currentProduct"
           ></app-product-details>
         </div>
       </div>

@@ -9,8 +9,8 @@ import { ProductService } from '@services/product-service.service';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  tutorials?: ProductDetails[];
-  currentTutorial: ProductDetails = {
+  product?: ProductDetails[];
+  currentProduct: ProductDetails = {
     id: '',
     productName: '',
     productDescription: '',
@@ -23,16 +23,16 @@ export class ProductListComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private tutorialService: ProductService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveProducts();
   }
 
-  retrieveTutorials(): void {
-    this.tutorialService.getAll().subscribe({
+  retrieveProducts(): void {
+    this.productService.getAll().subscribe({
       next: (data) => {
-        this.tutorials = data;
+        this.product = data;
         console.log(data);
       },
       error: (e) => console.error(e),
@@ -40,8 +40,8 @@ export class ProductListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
-    this.currentTutorial = {
+    this.retrieveProducts();
+    this.currentProduct = {
       id: '',
       productName: '',
       productDescription: '',
@@ -54,13 +54,13 @@ export class ProductListComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  setActiveTutorial(tutorial: ProductDetails, index: number): void {
-    this.currentTutorial = tutorial;
+  setActiveProduct(product: ProductDetails, index: number): void {
+    this.currentProduct = product;
     this.currentIndex = index;
   }
 
   searchTitle(): void {
-    this.currentTutorial = {
+    this.currentProduct = {
       id: '',
       productName: '',
       productDescription: '',
@@ -72,9 +72,9 @@ export class ProductListComponent implements OnInit {
     };
     this.currentIndex = -1;
 
-    this.tutorialService.findByTitle(this.title).subscribe({
+    this.productService.findByTitle(this.title).subscribe({
       next: (data) => {
-        this.tutorials = data;
+        this.product = data;
         console.log(data);
       },
       error: (e) => console.error(e),

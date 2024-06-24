@@ -8,14 +8,14 @@ import { ProductListComponent } from '@sharedComponents/product-list/product-lis
 import { ProductDetailsComponent } from '@sharedComponents/product-details/product-details.component';
 import { CategoriesComponent } from '@sharedComponents/categories/categories.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import {AsyncPipe} from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from '@services/product-service.service';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, provideToastr  } from 'ngx-toastr';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,8 +23,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
- import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { LoginComponent } from '@sharedComponents/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { LoginService } from './services/login.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 // Your code using DateTime goes here
 
@@ -34,7 +38,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     AddProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    LoginComponent
   ],
   imports: [
     MatAutocompleteModule,
@@ -46,7 +51,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     FormsModule,
     AsyncPipe,
     BrowserAnimationsModule,
-    HttpClientModule,
+    // HttpClientModule,
     ToastrModule.forRoot(),
     MatIconModule,
     MatButtonModule,
@@ -56,10 +61,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatNativeDateModule,
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
-    
-    
+    MatCardModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, LoginService,
+    provideAnimationsAsync(),
+    provideToastr(),
+    provideHttpClient(),
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

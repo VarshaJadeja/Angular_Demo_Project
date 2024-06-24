@@ -1,0 +1,34 @@
+.login-page {
+    background-color: #f0f0f0;
+  }
+  
+  .login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 20px;
+    background-color: green;
+  }
+  
+  .mat-mdc-raised-button:not(:disabled) {
+    color: white;
+    background: green;
+}
+
+.mat-mdc-card-title, .mat-mdc-card-subtitle{
+    display: flex;
+    justify-content: center;
+}

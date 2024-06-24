@@ -2,14 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '@services/product-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetails } from '@models/product.model';
-import { ToastrService } from 'ngx-toastr';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+// import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-product-details',
@@ -34,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    // private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +58,7 @@ export class ProductDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.router.navigate(['/products']);
-          this.toastr.success('This Product was updated successfully!');
+          // this.toastr.success('This Product was updated successfully!');
         },
         error: (e) => console.error(e),
       });
@@ -80,7 +74,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.router.navigate(['/products']);
-        this.toastr.success('This Product was deleted successfully!');
+        // this.toastr.success('This Product was deleted successfully!');
       },
       error: (e) => console.error(e),
     });
